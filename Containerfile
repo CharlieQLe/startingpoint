@@ -26,6 +26,7 @@ ARG IMAGE_REGISTRY=ghcr.io/ublue-os
 # for manual overrides and editing by the machine's admin AFTER installation!
 # See issue #28 (https://github.com/ublue-os/startingpoint/issues/28).
 COPY usr /usr
+COPY lib /lib
 
 # Copy public key
 COPY cosign.pub /usr/etc/pki/containers/cosign.pub

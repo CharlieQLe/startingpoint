@@ -48,7 +48,8 @@ jobs:
       matrix:
         recipe:
           - recipe.yml
-
+          - recipe-hyprland.yml
+          
     steps:
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action

@@ -1,6 +1,6 @@
 # Starting point
 
-[![build-ublue](https://github.com/ublue-os/startingpoint/actions/workflows/build.yml/badge.svg)](https://github.com/ublue-os/startingpoint/actions/workflows/build.yml)
+[![build-ublue](https://github.com/CharlieQLe/startingpoint/actions/workflows/build.yml/badge.svg)](https://github.com/CharlieQLe/startingpoint/actions/workflows/build.yml)
 
 This is a constantly updating template repository for creating [a native container image](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) designed to be customized however you want. GitHub will build your image for you, and then host it for you on [ghcr.io](https://github.com/features/packages). You then just tell your computer to boot off of that image. GitHub keeps 90 days worth image backups for you, thanks Microsoft!
 
@@ -35,7 +35,7 @@ If you want to execute custom shell scripts or commands in the image build, you 
 
 Instead, you should create your own custom shell scripts in the `scripts/` directory (look at the `example.sh`). After creating your scripts, enable them in the `scripts:` section of your `recipe.yml`, within the specific "build stage" category where the scripts are intended to be executed. Alternatively, enable the `autorun.sh` helper script in your recipe to automatically execute your custom scripts.
 
-Read [the README in the `scripts/` directory](https://github.com/ublue-os/startingpoint/blob/main/scripts/README.md) for more information.
+Read [the README in the `scripts/` directory](https://github.com/CharlieQLe/startingpoint/blob/main/scripts/README.md) for more information.
 
 ### Custom package repositories
 
@@ -90,7 +90,7 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
 
 - First rebase to the image unsigned, to get the proper signing keys and policies installed:
   ```
-  sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/startingpoint:latest
+  sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/charlieqle/startingpoint:latest
   ```
 - Reboot to complete the rebase:
   ```
@@ -98,7 +98,7 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
   ```
 - Then rebase to the signed image, like so:
   ```
-  sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/startingpoint:latest
+  sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/charlieqle/startingpoint:latest
   ```
 - Reboot again to complete the installation
   ```
@@ -109,7 +109,7 @@ To rebase an existing Silverblue/Kinoite installation to the latest build:
 This repository builds date tags as well, so if you want to rebase to a particular day's build:
 
 ```
-sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/startingpoint:20230403
+sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/charlieqle/startingpoint:20230403
 ```
 
 This repository by default also supports signing 

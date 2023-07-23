@@ -1,11 +1,11 @@
 # This file can only be edited inside the uBlue image's git repository.
 
 # The image will be at "ghcr.io/yourusername/name".
-name: startingpoint
+name: startingpoint-hyprland
 
 # The native container image to build on top of.
 # Warning: Non-uBlue images might not work properly, due to missing components.
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/base-main
 
 # What Fedora version to use. Use an explicit version or `latest`.
 # If you use `latest`, you will be automatically updated to the next major
@@ -27,7 +27,7 @@ scripts:
   pre:
     # Automatically runs script files within "scripts/pre/".
     - autorun.sh
-    - gnome-vrr.sh
+    - hyprland-xwayland.sh
     # Manually listed scripts.
     # - example_pre.sh
 
@@ -50,7 +50,7 @@ rpm:
     # Example (which also demonstrates version number expansion):
     # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%FEDORA_VERSION%/atim-starship-fedora-%FEDORA_VERSION%.repo
     - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%FEDORA_VERSION%/atim-starship-fedora-%FEDORA_VERSION%.repo
-    - https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-%FEDORA_VERSION%/kylegospo-gnome-vrr-fedora-%FEDORA_VERSION%.repo
+    - https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/repo/fedora-%FEDORA_VERSION%/solopasha-hyprland-fedora-%FEDORA_VERSION%.repo
 
   # These RPMs will be installed from your enabled repositories (Fedora's own
   # repos, extra "repos" you've added, etc). The installation is automatically
@@ -74,7 +74,28 @@ rpm:
     - corectrl
     - yubikey-manager-qt
     - libratbag-ratbagd
-    - gnome-console
+    - hyprland
+    - blueman
+    - hyprpaper
+    - hyprpicker
+    - nwg-launchers
+    - playerctl
+    - polkit-kde
+    - rofi-wayland
+    - swayidle
+    - swaylock
+    - udiskie
+    - wayvnc
+    - xrandr
+    - gtk-layer-shell
+    - gtk3
+    - gtk4
+    - gjs
+    - nautilus
+    - qt5-qtwayland
+    - qt6-qtwayland
+    - grim
+    - slurp
 
   # These RPMs will be removed from the system image. This step happens during
   # image build, BEFORE installing custom RPMs (from the "rpm.install" category).
@@ -82,8 +103,6 @@ rpm:
     # Remove the native firefox (from Fedora) in favor of the Flatpak.
     - firefox
     - firefox-langpacks
-    - gnome-terminal
-    - gnome-terminal-nautilus
 
 # Configuration for the "first boot" experience, which is available after login.
 firstboot:

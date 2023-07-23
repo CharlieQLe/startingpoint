@@ -50,8 +50,8 @@ screens:
       show_terminal: true
       package_manager: yafti.plugin.flatpak
       package_manager_defaults:
-        user: false
-        system: true
+        user: true
+        system: false
       groups:
         Core GNOME Apps:
           description: Core system applications for the GNOME desktop environment.
@@ -94,12 +94,23 @@ screens:
             - Google Chrome: com.google.Chrome
             - Microsoft Edge: com.microsoft.Edge
             - Opera: com.opera.Opera
+        Development:
+          description: "Boost your development!"
+          default: false
+          packages:
+            - Visual Studio Code: com.visualstudio.code
+            - Blender: org.blender.Blender
+            - Blender Codecs (Utility): org.blender.Blender.Codecs
+            - Flatpak Builder: org.flatpak.Builder
+            - Converter: io.gitlab.adhami3310.Converter
+            - Upscaler: io.gitlab.theevilskeleton.Upscaler
         Gaming:
           description: "Rock and Stone!"
           default: false
           packages:
             - Bottles: com.usebottles.bottles
             - Discord: com.discordapp.Discord
+            - Discord Screenaudio: de.shorsh.discord-screenaudio
             - GNOME Games: org.gnome.Games
             - Heroic Games Launcher: com.heroicgameslauncher.hgl
             - Steam: com.valvesoftware.Steam
@@ -107,6 +118,20 @@ screens:
             - MangoHUD (Utility): org.freedesktop.Platform.VulkanLayer.MangoHud//22.08
             - SteamTinkerLaunch (Utility): com.valvesoftware.Steam.Utility.steamtinkerlaunch
             - Proton Updater for Steam: net.davidotek.pupgui2
+            - Protontricks for Steam: com.github.Matoking.protontricks
+            - R2Mod for Risk of Rain 2: io.github.Foldex.r2mod
+            - Piper: org.freedesktop.Piper
+            - Prism Launcher for Minecraft: org.prismlauncher.PrismLauncher
+        Media:
+          description: "Watch and listen!"
+          default: true
+          packages:
+            - Clapper: com.github.rafostar.Clapper
+            - Amberol: com.yubico.yubioath
+            - GStreamer VAAPI Support: org.freedesktop.Platform.GStreamer.gstreamer-vaapi
+            - FFMPEG Full: org.freedesktop.Platform.ffmpeg-full
+            - OpenH264: org.freedesktop.Platform.openh264
+            - Video Downloader: com.github.unrud.VideoDownloader
         Office:
           description: Boost your productivity.
           default: false
@@ -114,6 +139,7 @@ screens:
             - LibreOffice: org.libreoffice.LibreOffice
             - OnlyOffice: org.onlyoffice.desktopeditors
             - Obsidian: md.obsidian.Obsidian
+            - RNote: com.github.flxzt.rnote
             - Slack: com.slack.Slack
             - Standard Notes: org.standardnotes.standardnotes
             - Thunderbird Email: org.mozilla.Thunderbird
@@ -123,9 +149,68 @@ screens:
           packages:
             - OBS Studio: com.obsproject.Studio
             - VkCapture for OBS: com.obsproject.Studio.OBSVkCapture
+            - VkCapture Vulkan Layer: org.freedesktop.Platform.VulkanLayer.OBSVkCapture
             - Gstreamer for OBS: com.obsproject.Studio.Plugin.Gstreamer
             - Gstreamer VAAPI for OBS: com.obsproject.Studio.Plugin.GStreamerVaapi
             - Boatswain for Streamdeck: com.feaneron.Boatswain
+        Themes:
+          description: "Personalize your apps!"
+          default: true
+          packages:
+            - org.gtk.Gtk3theme.adw-gtk3
+            - org.gtk.Gtk3theme.adw-gtk3-dark
+        Other:
+          description: Miscellaneous
+          default: false
+          packages:
+            - Bitwarden: com.bitwarden.desktop
+            - Peazip: io.github.peazip.PeaZip
+            - Yubico Authenticator: com.yubico.yubioath
+            - Mission Control: io.missioncenter.MissionCenter
+            - Syncthing GTK: me.kozec.syncthingtk
+            - Helvum: org.pipewire.Helvum
+            - Pavucontrol: org.pulseaudio.pavucontrol
+
+  setup-overrides:
+    source: yafti.screen.consent
+    values:
+      title: Setup Flatpak overrides
+      description: |
+        Now the installer will setup the Flatpak overrides. If you don't want to do this, simply exit this installer.
+      actions:
+        - run: flatpak --user override --filesystem=xdg-config/gtk-3.0:ro
+        - run: flatpak --user override --filesystem=xdg-config/gtk-4.0:ro
+        - run: flatpak --user override --filesystem=xdg-data/themes:ro
+        - run: flatpak --user override --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.firefox
+        - run: flatpak --user override --env=MOZ_DBUS_REMOTE=1
+        - run: flatpak --user override --env=FLATPAK_ENABLE_SDK_EXT=* com.visualstudio.code
+        - run: flatpak --user override --filesystem=xdg-config/MangoHud:ro com.valvesoftware.Steam
+        - run: flatpak --user override --filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam com.usebottles.bottles
+
+  setup-files:
+    source: yafti.screen.consent
+    values:
+      title: Setup files
+      description: |
+        Now the installer will setup the files. If you don't want to do this, simply exit this installer.
+      actions:
+        - run: mkdir -p ~/.local/bin
+        - run: cp /usr/etc/my-ublue/podman-host ~/.local/bin/podman-host
+        - run: chmod +x ~/.local/bin/podman-host
+        - run: mkdir -p ~/.config/MangoHud
+        - run: cp /usr/etc/my-ublue/MangoHud.conf ~/.config/MangoHud
+
+  finish-setup:
+    source: yafti.screen.consent
+    values:
+      title: Finish setup
+      description: |
+        Now the installer will finish the setup. If you don't want to do this, simply exit this installer.
+      actions:
+        - run: rpm-ostree initramfs --enable --arg=-I --arg=/lib/firmware/edid/aoc-edid.bin --arg=--add --arg=fido2
+        - run: rpm-ostree kargs --append-if-missing=amdgpu.ppfeaturemask=0xffffffff --append-if-missing=drm.edid_firmware=DP-3:edid/aoc-edid.bin --append-if-missing=video=DP-3:e --append-if-missing=amdgpu.gpu_recovery=1 --append-if-missing=rd.luks.options=fido2-device=auto
+        - run: pkexec usermod -a -G gamemode "$USER"
+        - run: systemctl enable --now ratbagd.service 
 
   final-screen:
     source: yafti.screen.title
