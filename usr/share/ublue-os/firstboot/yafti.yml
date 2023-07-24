@@ -1,6 +1,9 @@
 title: Welcome to uBlue
 properties:
   mode: "run-on-change"
+actions:
+  post:
+  - run: just --unstable post-setup
 screens:
   first-screen:
     source: yafti.screen.title
@@ -170,47 +173,6 @@ screens:
             - Syncthing GTK: me.kozec.syncthingtk
             - Helvum: org.pipewire.Helvum
             - Pavucontrol: org.pulseaudio.pavucontrol
-
-  setup-overrides:
-    source: yafti.screen.consent
-    values:
-      title: Setup Flatpak overrides
-      description: |
-        Now the installer will setup the Flatpak overrides. If you don't want to do this, simply exit this installer.
-      actions:
-        - run: flatpak --user override --filesystem=xdg-config/gtk-3.0:ro
-        - run: flatpak --user override --filesystem=xdg-config/gtk-4.0:ro
-        - run: flatpak --user override --filesystem=xdg-data/themes:ro
-        - run: flatpak --user override --env=MOZ_ENABLE_WAYLAND=1 org.mozilla.firefox
-        - run: flatpak --user override --env=MOZ_DBUS_REMOTE=1
-        - run: flatpak --user override --env=FLATPAK_ENABLE_SDK_EXT=* com.visualstudio.code
-        - run: flatpak --user override --filesystem=xdg-config/MangoHud:ro com.valvesoftware.Steam
-        - run: flatpak --user override --filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam com.usebottles.bottles
-
-  setup-files:
-    source: yafti.screen.consent
-    values:
-      title: Setup files
-      description: |
-        Now the installer will setup the files. If you don't want to do this, simply exit this installer.
-      actions:
-        - run: mkdir -p ~/.local/bin
-        - run: cp /usr/etc/my-ublue/podman-host ~/.local/bin/podman-host
-        - run: chmod +x ~/.local/bin/podman-host
-        - run: mkdir -p ~/.config/MangoHud
-        - run: cp /usr/etc/my-ublue/MangoHud.conf ~/.config/MangoHud
-
-  finish-setup:
-    source: yafti.screen.consent
-    values:
-      title: Finish setup
-      description: |
-        Now the installer will finish the setup. If you don't want to do this, simply exit this installer.
-      actions:
-        - run: rpm-ostree initramfs --enable --arg=-I --arg=/lib/firmware/edid/aoc-edid.bin --arg=--add --arg=fido2
-        - run: rpm-ostree kargs --append-if-missing=amdgpu.ppfeaturemask=0xffffffff --append-if-missing=drm.edid_firmware=DP-3:edid/aoc-edid.bin --append-if-missing=video=DP-3:e --append-if-missing=amdgpu.gpu_recovery=1 --append-if-missing=rd.luks.options=fido2-device=auto
-        - run: pkexec usermod -a -G gamemode "$USER"
-        - run: systemctl enable --now ratbagd.service 
 
   final-screen:
     source: yafti.screen.title
