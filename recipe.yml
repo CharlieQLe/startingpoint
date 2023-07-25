@@ -68,6 +68,8 @@ rpm:
     # Example:
     # - tilix
     - adw-gtk3-theme
+    - nautilus-extensions
+    - nautilus-python
     - starship
     - lm_sensors
     - btop
