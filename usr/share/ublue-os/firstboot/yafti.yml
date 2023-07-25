@@ -157,12 +157,6 @@ screens:
             - Gstreamer for OBS: com.obsproject.Studio.Plugin.Gstreamer
             - Gstreamer VAAPI for OBS: com.obsproject.Studio.Plugin.GStreamerVaapi
             - Boatswain for Streamdeck: com.feaneron.Boatswain
-        Themes:
-          description: "Personalize your apps!"
-          default: true
-          packages:
-            - org.gtk.Gtk3theme.adw-gtk3
-            - org.gtk.Gtk3theme.adw-gtk3-dark
         Other:
           description: Miscellaneous
           default: false
