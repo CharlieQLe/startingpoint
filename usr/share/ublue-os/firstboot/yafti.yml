@@ -101,6 +101,7 @@ screens:
           description: "Boost your development!"
           default: false
           packages:
+            - Black Box (Terminal): com.raggesilver.BlackBox
             - Visual Studio Code: com.visualstudio.code
             - Blender: org.blender.Blender
             - Blender Codecs (Utility): org.blender.Blender.Codecs
