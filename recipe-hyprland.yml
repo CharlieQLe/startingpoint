@@ -69,6 +69,8 @@ rpm:
     # Example:
     # - tilix
     - adw-gtk3-theme
+    - nautilus-extensions
+    - nautilus-python
     - starship
     - lm_sensors
     - btop
@@ -102,6 +104,7 @@ rpm:
     - fprintd
     - pulseaudio-utils
     - adwaita-icon-theme
+    - samba
 
   # These RPMs will be removed from the system image. This step happens during
   # image build, BEFORE installing custom RPMs (from the "rpm.install" category).
