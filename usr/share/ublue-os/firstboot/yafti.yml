@@ -1,9 +1,6 @@
 title: Welcome to uBlue
 properties:
   mode: "run-on-change"
-actions:
-  post:
-  - run: just --unstable post-setup
 screens:
   first-screen:
     source: yafti.screen.title
