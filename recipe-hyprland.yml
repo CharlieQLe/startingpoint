@@ -100,6 +100,7 @@ rpm:
     - sddm
     - fprintd
     - pulseaudio-utils
+    - adwaita-icon-theme
 
   # These RPMs will be removed from the system image. This step happens during
   # image build, BEFORE installing custom RPMs (from the "rpm.install" category).
