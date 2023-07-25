@@ -67,6 +67,7 @@ rpm:
     # Add your own below:
     # Example:
     # - tilix
+    - adw-gtk3-theme
     - starship
     - lm_sensors
     - btop
