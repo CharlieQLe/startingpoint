@@ -112,6 +112,7 @@ rpm:
     - gvfs-mtp
     - xdg-desktop-portal-gtk
     - nm-connection-editor
+    - gnome-online-accounts
 
   # These RPMs will be removed from the system image. This step happens during
   # image build, BEFORE installing custom RPMs (from the "rpm.install" category).
