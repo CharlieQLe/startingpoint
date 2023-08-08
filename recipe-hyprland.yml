@@ -50,6 +50,7 @@ rpm:
   repos:
     # Example (which also demonstrates version number expansion):
     # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%FEDORA_VERSION%/atim-starship-fedora-%FEDORA_VERSION%.repo
+    - https://copr.fedorainfracloud.org/coprs/alebastr/sway-extras/repo/fedora-%FEDORA_VERSION%/alebastr-sway-extras-fedora-%FEDORA_VERSION%.repo
     - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%FEDORA_VERSION%/atim-starship-fedora-%FEDORA_VERSION%.repo
     - https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/repo/fedora-%FEDORA_VERSION%/solopasha-hyprland-fedora-%FEDORA_VERSION%.repo
 
@@ -80,7 +81,7 @@ rpm:
     - libratbag-ratbagd
     - hyprland
     - blueman
-    - hyprpaper
+    - swww
     - hyprpicker
     - nwg-launchers
     - playerctl
@@ -114,6 +115,9 @@ rpm:
     - nm-connection-editor
     - gnome-online-accounts
     - gnome-bluetooth
+    - gnome-keyring
+    - gnome-keyring-pam
+    - openvpn
 
   # These RPMs will be removed from the system image. This step happens during
   # image build, BEFORE installing custom RPMs (from the "rpm.install" category).
