@@ -117,7 +117,6 @@ rpm:
     - gnome-bluetooth
     - gnome-keyring
     - gnome-keyring-pam
-    - openvpn
     - wl-clipboard
 
   # These RPMs will be removed from the system image. This step happens during
