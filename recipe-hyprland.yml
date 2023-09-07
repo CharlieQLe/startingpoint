@@ -85,7 +85,7 @@ rpm:
     - hyprpicker
     - nwg-launchers
     - playerctl
-    - polkit-kde
+    - polkit-gnome
     - rofi-wayland
     - swayidle
     - swaylock

@@ -82,10 +82,14 @@ jobs:
           BUILD_TAGS=()
           # Have tags for tracking builds during pull request
           SHA_SHORT="${GITHUB_SHA::7}"
-          COMMIT_TAGS+=("pr-${{ github.event.number }}-${MAJOR_VERSION}")
-          COMMIT_TAGS+=("${SHA_SHORT}-${MAJOR_VERSION}")
 
-          BUILD_TAGS=("${MAJOR_VERSION}" "${MAJOR_VERSION}-${TIMESTAMP}")
+          # Using clever bash string templating, https://stackoverflow.com/q/40771781
+          # don't make malformed tags if $MAJOR_VERSION is empty (base-image didn't include proper labels) --
+          COMMIT_TAGS+=("pr-${{ github.event.number }}${MAJOR_VERSION:+-$MAJOR_VERSION}")
+          COMMIT_TAGS+=("${SHA_SHORT}${MAJOR_VERSION:+-$MAJOR_VERSION}")
+
+          BUILD_TAGS=("${MAJOR_VERSION}" "${MAJOR_VERSION:+$MAJOR_VERSION-}${TIMESTAMP}")
+          # --
 
           BUILD_TAGS+=("${TIMESTAMP}")
           BUILD_TAGS+=("latest")
@@ -177,7 +181,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       # Sign container
-      - uses: sigstore/cosign-installer@v3.1.1
+      - uses: sigstore/cosign-installer@v3.1.2
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/live'
 
       - name: Sign container image
