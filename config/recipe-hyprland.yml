@@ -22,26 +22,69 @@ modules:
   - type: rpm-ostree
     repos:
       # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/alebastr/sway-extras/repo/fedora-%FEDORA_VERSION%/alebastr-sway-extras-fedora-%FEDORA_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%FEDORA_VERSION%/atim-starship-fedora-%FEDORA_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-%FEDORA_VERSION%/kylegospo-gnome-vrr-fedora-%FEDORA_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/repo/fedora-%FEDORA_VERSION%/solopasha-hyprland-fedora-%FEDORA_VERSION%.repo
+      - https://terra.fyralabs.com/terra.repo
     install:
       # - micro
       # - starship
+      - adw-gtk3-theme
+      - adwaita-icon-theme
+      - blueman
       - btop
       - corectrl
-      - gnome-console
+      - fprintd
+      - gjs
+      - gnome-bluetooth
+      - gnome-keyring
+      - gnome-keyring-pam
+      - gnome-online-accounts
+      - grim
+      - gtk3
+      - gtk4
+      - gtk-layer-shell
+      - gtk4-layer-shell
+      - gvfs
+      - gvfs-fuse
+      - gvfs-smb
+      - gvfs-mtp
+      - hyprland
+      - hyprpicker
+      - libadwaita
+      - libatomic
       - libratbag-ratbagd
       - lm_sensors
+      - nautilus
+      - nautilus-extensions
+      - nautilus-python
+      - nm-connection-editor
       - nvtop
+      - nwg-launchers
       - openresolv
       - openvpn
+      - playerctl
+      - polkit-gnome
+      - pulseaudio-utils
+      - qt5-qtwayland
+      - qt6-qtwayland
+      - rofi-wayland
+      - sddm
+      - samba
+      - slurp
       - starship
+      - swayidle
+      - swaylock
+      - swww
+      - udiskie
+      - wayvnc
+      - wl-clipboard
+      - xdg-desktop-portal-gtk
+      - xrandr
       - yubikey-manager-qt
     remove:
       - firefox # default firefox removed in favor of flatpak
       - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
-      - gnome-terminal
-      - gnome-terminal-nautilus
 
   - type: bling # configure what to pull in from ublue-os/bling
     install:
@@ -65,4 +108,5 @@ modules:
     scripts:
       # this sets up the proper policy & signing files for signed images to work
       - signing.sh
-      - gnome-vrr.sh
+      - hyprland-xwayland.sh
+      - sddm.sh

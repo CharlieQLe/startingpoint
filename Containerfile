@@ -20,6 +20,15 @@ ARG RECIPE=recipe.yml
 # The default image registry to write to policy.json and cosign.yaml
 ARG IMAGE_REGISTRY=ghcr.io/ublue-os
 
+# Copy static configurations and component files.
+# Warning: If you want to place anything in "/etc" of the final image, you MUST
+# place them in "./usr/etc" in your repo, so that they're written to "/usr/etc"
+# on the final system. That is the proper directory for "system" configuration
+# templates on immutable Fedora distros, whereas the normal "/etc" is ONLY meant
+# for manual overrides and editing by the machine's admin AFTER installation!
+# See issue #28 (https://github.com/ublue-os/startingpoint/issues/28).
+COPY usr /usr
+COPY lib /lib
 
 COPY cosign.pub /usr/share/ublue-os/cosign.pub
 
