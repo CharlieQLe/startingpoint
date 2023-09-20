@@ -70,7 +70,6 @@ modules:
       - qt6-qtwayland
       - rofi-wayland
       - sddm
-      - samba
       - slurp
       - starship
       - swayidle
