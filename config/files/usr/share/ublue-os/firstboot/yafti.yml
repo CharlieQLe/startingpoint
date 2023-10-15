@@ -50,8 +50,8 @@ screens:
       show_terminal: true
       package_manager: yafti.plugin.flatpak
       package_manager_defaults:
-        user: false
-        system: true
+        user: true
+        system: false
       groups:
         Core GNOME Apps:
           description: Core system applications for the GNOME desktop environment.
@@ -72,7 +72,6 @@ screens:
             - Image Viewer: org.gnome.Loupe
             - Logs: org.gnome.Logs
             - Maps: org.gnome.Maps
-            - Photos (Organizer): org.gnome.Photos
             - Sushi (Nautilus Previewer): org.gnome.NautilusPreviewer
             - Text Editor: org.gnome.TextEditor
             - Videos (Player): org.gnome.Totem
@@ -95,6 +94,17 @@ screens:
             - Google Chrome: com.google.Chrome
             - Microsoft Edge: com.microsoft.Edge
             - Opera: com.opera.Opera
+        Development:
+          description: "Boost your development!"
+          default: false
+          packages:
+            - Black Box (Terminal): com.raggesilver.BlackBox
+            - Visual Studio Code: com.visualstudio.code
+            - Blender: org.blender.Blender
+            - Blender Codecs (Utility): org.blender.Blender.Codecs
+            - Flatpak Builder: org.flatpak.Builder
+            - Converter: io.gitlab.adhami3310.Converter
+            - Upscaler: io.gitlab.theevilskeleton.Upscaler
         Gaming:
           description: "Rock and Stone!"
           default: false
@@ -103,10 +113,41 @@ screens:
             - Discord: com.discordapp.Discord
             - Heroic Games Launcher: com.heroicgameslauncher.hgl
             - Steam: com.valvesoftware.Steam
-            - Gamescope (Utility): org.freedesktop.Platform.VulkanLayer.gamescope
-            - MangoHUD (Utility): org.freedesktop.Platform.VulkanLayer.MangoHud//22.08
+            - Gamescope (Utility): org.freedesktop.Platform.VulkanLayer.gamescope//23.08
+            - MangoHUD (Utility): org.freedesktop.Platform.VulkanLayer.MangoHud//23.08
             - SteamTinkerLaunch (Utility): com.valvesoftware.Steam.Utility.steamtinkerlaunch
-            - Proton Updater for Steam: net.davidotek.pupgui2
+            - Proton Plus: com.vysp3r.ProtonPlus
+            - Discord Screenaudio: de.shorsh.discord-screenaudio
+            - Protontricks for Steam: com.github.Matoking.protontricks
+            - R2Mod for Risk of Rain 2: io.github.Foldex.r2mod
+            - Piper: org.freedesktop.Piper
+            - Prism Launcher for Minecraft: org.prismlauncher.PrismLauncher
+        Emulation:
+          description: "Play old games!"
+          default: false
+          packages:
+            - ares: dev.ares.ares
+            - Parallel Launcher for N64: ca.parallel_launcher.ParallelLauncher
+            - Dolphin for Wii and GameCube: org.DolphinEmu.dolphin-emu
+            - mGBA for Game Boy: io.mgba.mGBA
+            - MelonDS for DS: net.kuribo64.melonDS
+            - Citra for 3DS: org.citra_emu.citra
+            - Ryujinx for Switch: org.ryujinx.Ryujinx
+            - Yuzu for Switch: org.yuzu_emu.yuzu
+            - DuckStation for PS1: org.duckstation.DuckStation
+            - PCSX2 for PS2: net.pcsx2.PCSX2
+            - RPCS3 for PS3: net.rpcs3.RPCS3
+            - PPSSPP for PSP: org.ppsspp.PPSSPP
+        Media:
+          description: "Watch and listen!"
+          default: true
+          packages:
+            - Clapper: com.github.rafostar.Clapper
+            - Amberol: com.yubico.yubioath
+            - GStreamer VAAPI Support: org.freedesktop.Platform.GStreamer.gstreamer-vaapi
+            - FFMPEG Full: org.freedesktop.Platform.ffmpeg-full
+            - OpenH264: org.freedesktop.Platform.openh264
+            - Video Downloader: com.github.unrud.VideoDownloader
         Office:
           description: Boost your productivity.
           default: false
@@ -117,6 +158,7 @@ screens:
             - Slack: com.slack.Slack
             - Standard Notes: org.standardnotes.standardnotes
             - Thunderbird Email: org.mozilla.Thunderbird
+            - RNote: com.github.flxzt.rnote
         Streaming:
           description: Stream to the Internet.
           default: false
@@ -126,6 +168,18 @@ screens:
             - Gstreamer for OBS: com.obsproject.Studio.Plugin.Gstreamer
             - Gstreamer VAAPI for OBS: com.obsproject.Studio.Plugin.GStreamerVaapi
             - Boatswain for Streamdeck: com.feaneron.Boatswain
+            - VkCapture Vulkan Layer: org.freedesktop.Platform.VulkanLayer.OBSVkCapture
+        Other:
+          description: Miscellaneous
+          default: false
+          packages:
+            - Bitwarden: com.bitwarden.desktop
+            - Peazip: io.github.peazip.PeaZip
+            - Yubico Authenticator: com.yubico.yubioath
+            - Mission Control: io.missioncenter.MissionCenter
+            - Syncthing GTK: me.kozec.syncthingtk
+            - Helvum: org.pipewire.Helvum
+            - Pavucontrol: org.pulseaudio.pavucontrol
 
   final-screen:
     source: yafti.screen.title

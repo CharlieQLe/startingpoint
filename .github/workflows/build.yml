@@ -40,8 +40,8 @@ jobs:
         # Don't add module configuration files, you will get errors.
         recipe:
           - recipe.yml
-# !!!
-
+          - recipe-hyprland.yml
+          
     steps:
       - name: Maximize build space
         uses: AdityaGarg8/remove-unwanted-software@v1
