@@ -32,9 +32,11 @@ modules:
       - adw-gtk3-theme
       - adwaita-icon-theme
       - blueman
+      - brightnessctl
       - btop
       - corectrl
       - fprintd
+      - fprintd-pam
       - gjs
       - gnome-bluetooth
       - gnome-keyring
