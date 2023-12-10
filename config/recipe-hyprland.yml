@@ -60,6 +60,7 @@ modules:
       - nautilus
       - nautilus-extensions
       - nautilus-python
+      - ncdu
       - nm-connection-editor
       - nvtop
       - nwg-launchers
