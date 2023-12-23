@@ -31,14 +31,15 @@ modules:
       # - starship
       - adw-gtk3-theme
       - adwaita-icon-theme
-      - blueman
+      - bluez
+      - bluez-libs
       - brightnessctl
       - btop
       - corectrl
       - fprintd
       - fprintd-pam
       - gjs
-      - gnome-bluetooth
+      - gnome-bluetooth-libs
       - gnome-keyring
       - gnome-keyring-pam
       - gnome-online-accounts
@@ -87,7 +88,6 @@ modules:
     remove:
       - firefox # default firefox removed in favor of flatpak
       - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
-      - bluez-obexd # for downgrading bluez
   - type: bling # configure what to pull in from ublue-os/bling
     install:
       - fonts # selection of common good free fonts
