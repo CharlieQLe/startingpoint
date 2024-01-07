@@ -52,7 +52,6 @@ modules:
       - gvfs-fuse
       - gvfs-smb
       - gvfs-mtp
-      - hyprpicker
       - libadwaita
       - libatomic
       - libratbag-ratbagd
