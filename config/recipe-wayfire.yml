@@ -78,11 +78,13 @@ modules:
       - swww
       - udiskie
       - wayfire
+      - wayfire-plugins-extra
       - wayland-logout
       - wayvnc
       - wf-shell
       - wl-clipboard
       - wlr-randr
+      - wofi
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-wlr
       - xrandr
