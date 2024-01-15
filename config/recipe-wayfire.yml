@@ -77,8 +77,8 @@ modules:
       - swaylock
       - swww
       - udiskie
-      - wayfire
-      - wayfire-plugins-extra
+      - wayfire-git
+      - wayfire-plugins-extra-git
       - wayland-logout
       - wayvnc
       - wf-shell
